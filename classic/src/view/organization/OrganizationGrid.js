@@ -113,11 +113,6 @@ Ext.define('Admin.view.organization.OrganizationGrid', {
             tooltip: '删除所选',
             iconCls: 'x-fa fa-minus',
             handler: 'delete'
-        }, '-', {
-            text: '添加规则',
-            tooltip: '添加规则',
-            iconCls: 'x-fa fa-cog',
-            handler: 'addRule'
         }]
     }],
     initComponent: function() {

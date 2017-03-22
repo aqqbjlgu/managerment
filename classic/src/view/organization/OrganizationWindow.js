@@ -3,7 +3,7 @@ Ext.define('Admin.view.organization.OrganizationWindow', {
     alias: 'widget.organization.organizationWindow',
     reference: 'organizationWindow',
     id: 'organizationWindow',
-    //height: auto,
+    //height: '80%',
     width: '50%',
     title: '添加/修改组织机构',
     modal: true,
@@ -18,6 +18,7 @@ Ext.define('Admin.view.organization.OrganizationWindow', {
                 anchor: '100%',
                 msgTarget: 'side'
             },
+            scrollable :true,
             id:'organizationForm',
             reference: 'organizationForm',
             items:[
@@ -161,13 +162,61 @@ Ext.define('Admin.view.organization.OrganizationWindow', {
                     name: 'belongTo'
                 },
                 {
-                    xtype: 'textfield',
-                    margin: '0 5 10 10',
+                    xtype: 'combobox',
                     fieldLabel: '管理类型',
+                    name: 'managerType',
+                    store : Ext.create('Ext.data.Store', {
+                        fields : [{
+                            type : 'string',
+                            name : 'label'
+                        },{
+                            type : 'string',
+                            name : 'value'
+                        }],
+                        data : [{
+                            "label" : "所有类型",
+                            "value" : '1'
+                        },{
+                            "label" : "自定义类型",
+                            "value" : '2'
+                        },{
+                            "label" : "不具备管理功能",
+                            "value" : '-1'
+                        }]
+                    }),
+                    listeners:{
+                        'select': function(combo , record , eOpts){
+                            console.info(record.get('value'));
+                            if(record.get('value')=='2'){
+                                
+                            }
+                        }
+                    },
+                    valueField : 'value',
+                    displayField : 'label',
+                    emptyText : '组织机构管理类型',
+                    typeAhead : true,
+                    queryMode : 'local',
+                    allowBlank : false,
+                    editable : false,
                     width: "100%",
-                    emptyText: '组织机构管理类型',
-                    allowBlank:false,
-                    name: 'managerType'
+                    margin: '0 5 10 10'
+                    //renderTo: Ext.getBody()
+                },
+                {
+                    xtype: 'fieldset',
+                    title: '非必填',
+                    layout: 'anchor',
+                    margin: '0 5 10 10',
+                    frame: true,
+                    defaults: {
+                        anchor: '100%'
+                    },
+                    baseCls:'x-fieldset1',
+                    id: 'orgFieldset',
+                    items: [{
+                        xtype: 'organization.organizationRuleWindow'
+                    }]
                 }
             ]
         }
