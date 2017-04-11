@@ -3,6 +3,7 @@ $image-search-path: 'E:/managerment/build/production/Admin/classic/resources';
 $theme-name:  dynamic( 'theme-spotifext' );
 $include-admin-application: dynamic(true);;
 $include-admin-controller-organization-organizationcontroller: dynamic(true);;
+$include-admin-controller-organization-organizationrulecontroller: dynamic(true);;
 $include-admin-controller-organization-organizationtypegridcontroller: dynamic(true);;
 $include-admin-controller-organization-organizationtyperulecontroller: dynamic(true);;
 $include-admin-controller-organization-personcontroller: dynamic(true);;

@@ -37,10 +37,8 @@ Ext.define('Admin.controller.Organization.OrganizationTypeRuleController', {
     onSubmit: function ( ) {
         var organizationTypeRuleForm =this.lookupReference('organizationTypeRuleForm');
         if(organizationTypeRuleForm){
-             console.info('111111');
             organizationTypeRuleForm = organizationTypeRuleForm.getForm();
         }else{
-             console.info('22222');
             organizationTypeRuleForm = Ext.getCmp('hideOrganizationTypeForm');
         }
         var showToast = this.showToast;

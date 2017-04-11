@@ -3,7 +3,7 @@ Ext.define('Admin.view.organization.OrganizationWindow', {
     alias: 'widget.organization.organizationWindow',
     reference: 'organizationWindow',
     id: 'organizationWindow',
-    //height: '80%',
+    height: '90%',
     width: '50%',
     title: '添加/修改组织机构',
     modal: true,

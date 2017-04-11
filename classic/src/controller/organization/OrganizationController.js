@@ -64,7 +64,6 @@ Ext.define('Admin.controller.Organization.OrganizationController', {
             var organizationRuleWindow = this.lookupReference('organizationRuleWindow');
             if (!organizationRuleWindow) {
                 organizationRuleWindow = new Admin.view.organization.OrganizationRuleWindow();
-                console.info(organizationRuleWindow);
             }
             organizationRuleWindow.show();
          }else{
@@ -115,7 +114,6 @@ Ext.define('Admin.controller.Organization.OrganizationController', {
                         if('errorType'=='NormException'){
                             showToast(action.result.msg,"ERROR");
                         }else{
-                            console.info(Ext.getCmp('mainView'));
                             Ext.getCmp('mainView').getController().setCurrentView('pages.Error500Panel',action.result.status,action.result.msg);
                         }
                         Ext.getCmp('organizationWindow').close();

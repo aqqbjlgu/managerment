@@ -5,7 +5,7 @@ Ext.define('Admin.store.organization.OrganizationRuleStore', {
     model: 'Admin.model.organization.OrganizationModel',
     autoLoad: true,
     folderSort : true,
-    pageSize : 10,
+    //pageSize : 2,
     proxy: {
         type: 'ajax',
         url: 'http://rms.youngsun.com:8088/org/getAllWithoutTree.do',
