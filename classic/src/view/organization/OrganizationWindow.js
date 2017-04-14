@@ -52,6 +52,11 @@ Ext.define('Admin.view.organization.OrganizationWindow', {
                     name: 'id',
                     hidden: 'true'
                 },
+                {
+                    xtype: 'textfield',
+                    name: 'orgRuleIds',
+                    hidden: 'true'
+                },
                  {
                     xtype: 'textfield',
                     name: 'leaf',
@@ -214,6 +219,7 @@ Ext.define('Admin.view.organization.OrganizationWindow', {
                     },
                     baseCls:'x-fieldset1',
                     id: 'orgFieldset',
+                    name: 'orgFieldset',
                     items: [{
                         xtype: 'organization.organizationRuleWindow'
                     }]

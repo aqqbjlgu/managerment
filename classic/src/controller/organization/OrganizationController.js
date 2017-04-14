@@ -9,6 +9,21 @@ Ext.define('Admin.controller.Organization.OrganizationController', {
         }
         organizationWindow.show();
         organizationWindow.lookupReference('organizationForm').loadRecord(record);
+        var items = Ext.getCmp('organizationRuleWindow');
+        var store =  new Ext.data.Store({
+            model: 'Admin.model.organization.OrganizationModel',
+            autoLoad: true,
+            folderSort : true,
+            proxy: {
+                type: 'ajax',
+                url: 'http://rms.youngsun.com:8088/org/getOrgRuleByOrgId/'+record.get('id'),
+                reader: {
+                    type: 'json',//
+                    rootProperty: 'data'
+                }
+            }
+        });
+        items.lookupReference('grid2').setStore(store).reload();
     },
     delete: function(){
         var grid = this.getView();
@@ -85,6 +100,13 @@ Ext.define('Admin.controller.Organization.OrganizationController', {
             organizationForm.findField('leaf').setValue(true);
         }
         organizationForm.findField('typeName').setValue(organizationForm.findField('typeId').getRawValue());
+        var items = Ext.getCmp('organizationRuleWindow');
+        var store = items.lookupReference('grid2').getStore();
+        var ids = [];
+        for (var i = 0; i < store.getCount(); i++) {
+            ids.push(store.getAt(i).get('id'));
+        }
+        organizationForm.findField('orgRuleIds').setValue(ids);
         var showToast = this.showToast;
         organizationForm.submit({
             // 设置提交的地址
